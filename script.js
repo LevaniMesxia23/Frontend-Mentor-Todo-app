@@ -3,15 +3,20 @@ const button = document.querySelector("button")
 let span;
 let x;
 const container = document.querySelector(".container")
+const moon = document.querySelector(".moon")
+const sun = document.querySelector(".sun")
+const body = document.querySelector("body")
+
+const instBox = document.querySelector(".instruction-box")
 
 input.addEventListener("keyup", (e) => {
   if (e.key === "Enter" && input.value !== "") {
     createDiv(input.value)
   }
 })
-
+let newDiv;
 function createDiv(inputValue) {
-  let newDiv = document.createElement("div")
+  newDiv = document.createElement("div")
   newDiv.innerHTML += `<div class="added-div">
     <button><img src="./images/icon-check.svg" alt=""></button>
     <span class="main-span">${inputValue}</span>
@@ -28,9 +33,58 @@ function createDiv(inputValue) {
   })
   input.value = ""
 }
+// const addedDiv = document.querySelector(".added-div") აქ გამოვიტანე
 
-  button.addEventListener("click", () => {
-    span.classList.remove("main-span")
-    span.classList.add("spanCrossed")
+  // button.addEventListener("click", () => {
+  //   span.classList.remove("main-span")
+  //   span.classList.add("spanCrossed")
+  // })
+const itemsLeft = document.querySelector(".items-left")
+const all = document.querySelector(".all")
+const active = document.querySelector(".active")
+const completed = document.querySelector(".completed")
+const clearCompleted = document.querySelector(".clear-completed")  
+
+  moon.addEventListener("click", () => {
+    if(moon.style.display = "block"){
+      moon.style.display = "none"
+      sun.style.display = "block"
+      body.style.backgroundColor = "#171823";
+      input.style.backgroundColor = "#25273D";
+      input.style.color = "#C8CBE7";
+
+      itemsLeft.style.color = "#C8CBE7";
+      all.style.color = "#C8CBE7";
+      active.style.color = "#C8CBE7";
+      completed.style.color = "#C8CBE7";
+      clearCompleted.style.color = "#C8CBE7";
+      instBox.style.backgroundColor = "#25273D";
+
+      // newDiv.style.backgroundColor = "#25273D";  1
+      // addedDiv.style.backgroundColor = "#25273D";  2
+
+    } else {
+      moon.style.display = "block"
+      sun.style.display = "none"
+    }
+  })
+  sun.addEventListener("click", () => {
+    if(sun.style.display = "block"){
+      sun.style.display = "none"
+      moon.style.display = "block"
+      body.style.backgroundColor = "white";
+      input.style.backgroundColor = "#fff";
+      
+      itemsLeft.style.color = "#9495A5;";
+      all.style.color = "#9495A5;";
+      active.style.color = "#9495A5;";
+      completed.style.color = "#9495A5;";
+      clearCompleted.style.color = "#9495A5;";
+      instBox.style.backgroundColor = "#FFF";
+      
+    } else {
+      sun.style.display = "block"
+      moon.style.display = "none"
+    }
   })
 

@@ -28,6 +28,9 @@ h1{
   line-height: normal;
   letter-spacing: 15px;
 }
+.moon,.sun{
+  cursor: pointer;
+}
 .container{
   display: flex;
   align-items: center;
@@ -54,6 +57,8 @@ h1{
   line-height: normal;
   letter-spacing: -0.25px;
 }
+
+
 
 .added-div{
   width: 540px;
@@ -130,6 +135,16 @@ button{
   letter-spacing: -0.194px;
   gap: 19px;
 }
-.all{
+
+
+.all:hover,
+.active:hover,
+.completed:hover,
+.clear-completed:hover
+{
   color: #3A7CFD;
+  cursor: pointer;
+}
+.items-left:hover{
+  color: chocolate;
 }
