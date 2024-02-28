@@ -1,0 +1,135 @@
+*{
+  margin:auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  background-image: url(./images/bg-desktop-light.jpg);
+  background-repeat: no-repeat;
+  background-size: 100vw 300px;
+  width: contain;
+  height: 500px;
+  background-color: #FAFAFA;
+}
+.h1-title{
+  margin-top: 78px;
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+}
+h1{
+  color: #FFF;
+  font-family: "Josefin Sans";
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 15px;
+}
+.container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.input{
+  width: 540px;
+  height: 64px;
+  flex-shrink: 0;
+  border-radius: 5px;
+  background: #FFF;
+  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
+  border: none;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding-left: 20px;
+
+  color: #393A4B;
+  font-family: "Josefin Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.25px;
+}
+
+.added-div{
+  width: 540px;
+  flex-shrink: 0;
+  background-color: #FFF;
+  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
+  padding: 16px;
+  border-bottom: 1px solid #E3E4F1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+button{
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-left: -1px;
+  cursor: pointer;
+}
+.main-span{
+  margin-left: -150px;
+}
+.spanCrossed{
+  color: #D1D2DA;
+  font-family: "Josefin Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.25px;
+  text-decoration: line-through;
+}
+.x{
+  margin-right: -1px;
+  cursor: pointer;
+}
+
+
+.instruction-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 540px;
+  background-color: #FFF;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  padding: 16px;
+  border: none;
+  margin-top: 2px;
+}
+#left-inst,#right-inst{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9495A5;
+  font-family: "Josefin Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.194px;
+}
+#center-inst{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9495A5;
+  font-family: "Josefin Sans";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.194px;
+  gap: 19px;
+}
+.all{
+  color: #3A7CFD;
+}
