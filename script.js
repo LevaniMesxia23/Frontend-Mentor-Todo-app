@@ -8,6 +8,7 @@ const body = document.querySelector("body")
 const instBox = document.querySelector(".instruction-box")
 const newDiv = document.querySelector(".newDiv")
 const itemsLeft = document.querySelector(".items-left")
+let arr = []
 
 input.addEventListener("keyup", (e) => {
   if (e.key === "Enter" && input.value !== "") {
@@ -16,6 +17,7 @@ input.addEventListener("keyup", (e) => {
 })
 
 function createDiv(inputValue) {
+
   newDiv.innerHTML += `<div class="added-div">
     <button><img src="./images/icon-check.svg" alt=""></button>
     <span class="main-span">${inputValue}</span>
@@ -40,10 +42,19 @@ function createDiv(inputValue) {
         span.classList.add("main-span")
       }
       countItems()
-      // span.classList.toggle("spanCrossed")
     })
 
   })
+  function deleteDiv(){
+    addedDiv.forEach((addedDiv) => {
+      x = addedDiv.querySelector(".x")
+      x.addEventListener("click", () => {
+        addedDiv.remove()
+        console.log(x)
+      })
+    })
+  }
+  deleteDiv()
 
   function countItems(){
     let count = 0
@@ -55,32 +66,10 @@ function createDiv(inputValue) {
     })
     itemsLeft.innerHTML = `${count} items left`
   }
-  countItems()
-  // x = newDiv.querySelector(".x")
-  // let i = 1
-  // x.addEventListener("click", () => {
-    
-  //     console.log(addedDiv.length)
-  //   for(i; i < addedDiv.length; i++){
-  //     newDiv.splice(addedDiv[i],1)
-  //   }
-  // })
-  
-  
-// const addedDiv = document.querySelector(".added-div") აქ გამოვიტანე
-// const button = newDiv.querySelector("button")
-//   button.addEventListener("click", () => {
-//     const span = newDiv.querySelector("span")
-//     if(span.classList.contains("main-span")){
-//       span.classList.remove("main-span")
-//       span.classList.add("spanCrossed")
-//     }else if(span.classList = "spanCrossed"){
-//       span.classList.remove("spanCrossed")
-//       span.classList.add("main-span")
-//     }
-//     // span.classList.toggle("spanCrossed")
-//   })
 
+// const addedDiv = document.querySelector(".added-div") აქ გამოვიტანე
+
+  countItems()
   input.value = ""
 }
 
