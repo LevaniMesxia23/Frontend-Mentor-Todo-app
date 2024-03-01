@@ -7,6 +7,7 @@ const sun = document.querySelector(".sun")
 const body = document.querySelector("body")
 const instBox = document.querySelector(".instruction-box")
 const newDiv = document.querySelector(".newDiv")
+const itemsLeft = document.querySelector(".items-left")
 
 input.addEventListener("keyup", (e) => {
   if (e.key === "Enter" && input.value !== "") {
@@ -24,30 +25,47 @@ function createDiv(inputValue) {
   </div>`
   
   const addedDiv = document.querySelectorAll(".added-div")
+  let count = 0
   addedDiv.forEach(addedDiv => {
     const button = addedDiv.querySelector("button")
+    
+    itemsLeft.innerHTML = `${count} items left`
     button.addEventListener("click", () => {
       const span = addedDiv.querySelector("span")
       if(span.classList.contains("main-span")){
         span.classList.remove("main-span")
         span.classList.add("spanCrossed")
-      }else if(span.classList = "spanCrossed"){
+      }else{
         span.classList.remove("spanCrossed")
         span.classList.add("main-span")
       }
+      countItems()
       // span.classList.toggle("spanCrossed")
     })
+
   })
 
-
+  function countItems(){
+    let count = 0
+    addedDiv.forEach(addedDiv => {
+      const span = addedDiv.querySelector("span")
+      if(span.classList.contains("main-span")){
+        count++
+      }
+    })
+    itemsLeft.innerHTML = `${count} items left`
+  }
+  countItems()
   // x = newDiv.querySelector(".x")
   // let i = 1
   // x.addEventListener("click", () => {
-  //   for(i; i < addedDiv.length; i++){
-  //     addedDiv.splice(i,1)
+    
   //     console.log(addedDiv.length)
+  //   for(i; i < addedDiv.length; i++){
+  //     newDiv.splice(addedDiv[i],1)
   //   }
   // })
+  
   
 // const addedDiv = document.querySelector(".added-div") აქ გამოვიტანე
 // const button = newDiv.querySelector("button")
@@ -62,10 +80,10 @@ function createDiv(inputValue) {
 //     }
 //     // span.classList.toggle("spanCrossed")
 //   })
+
   input.value = ""
 }
 
-const itemsLeft = document.querySelector(".items-left")
 const all = document.querySelector(".all")
 const active = document.querySelector(".active")
 const completed = document.querySelector(".completed")
