@@ -89,6 +89,7 @@ button{
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  margin-left: -150px;
   letter-spacing: -0.25px;
   text-decoration: line-through;
 }
