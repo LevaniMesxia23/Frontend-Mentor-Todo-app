@@ -8,7 +8,6 @@ const body = document.querySelector("body")
 const instBox = document.querySelector(".instruction-box")
 const newDiv = document.querySelector(".newDiv")
 const itemsLeft = document.querySelector(".items-left")
-let arr = []
 
 input.addEventListener("keyup", (e) => {
   if (e.key === "Enter" && input.value !== "") {
@@ -50,6 +49,7 @@ function createDiv(inputValue) {
       x = addedDiv.querySelector(".x")
       x.addEventListener("click", () => {
         addedDiv.remove()
+        countItems()
         console.log(x)
       })
     })
@@ -60,10 +60,10 @@ function createDiv(inputValue) {
     let count = 0
     addedDiv.forEach(addedDiv => {
       const span = addedDiv.querySelector("span")
-      if(span.classList.contains("main-span")){
+      if(!span.classList.contains("spanCrossed") || deleteDiv() ){
         count++
       }
-    })
+      })
     itemsLeft.innerHTML = `${count} items left`
   }
 
@@ -73,14 +73,42 @@ function createDiv(inputValue) {
   input.value = ""
 }
 
-const all = document.querySelector(".all")
-const active = document.querySelector(".active")
 const completed = document.querySelector(".completed")
-const clearCompleted = document.querySelector(".clear-completed")  
+let arr = []
+completed.addEventListener("click", () => {
+    const addedDiv = document.querySelectorAll(".added-div")
+    addedDiv.forEach(addedDiv => {
+        const span = addedDiv.querySelector("span")
+        if(span.classList.contains("main-span")) {
+            arr.push(addedDiv)
+        } else{
+
+        }
+    })
+})
+const active = document.querySelector(".active")
+
+active.addEventListener("click", () => {
+  const addedDiv = document.querySelectorAll(".added-div")
+  addedDiv.forEach(addedDiv => {
+      const span = addedDiv.querySelector("span")
+      if (!span.classList.contains("main-span")) {
+          addedDiv.remove();
+      }
+  })
+})
+
+
+
+const all = document.querySelector(".all")
+
+const addedDiv = document.querySelectorAll(".added-div")
+const clearCompleted = document.querySelector(".clear-completed")
+
 let moonImage =  "./images/bg-desktop-dark.jpg"
 let sunImage =  "./images/bg-desktop-light.jpg"
   moon.addEventListener("click", () => {
-    if(moon.style.display = "block"){
+    if(moon.style.display === "block"){
       moon.style.display = "none";
       sun.style.display = "block";
       body.style.backgroundColor = "#171823";
@@ -93,7 +121,13 @@ let sunImage =  "./images/bg-desktop-light.jpg"
       completed.style.color = "#C8CBE7";
       clearCompleted.style.color = "#C8CBE7";
       instBox.style.backgroundColor = "#25273D";
-
+      newDiv.style.backgroundColor = "#25273D";
+      // addedDiv.forEach(div => {
+      //   div.style.backgroundColor = "#25273D";
+      //   div.style.color = "#C8CBE7";
+      // })
+      console.log(newDiv);
+      console.log(addedDiv);
       // newDiv.style.backgroundColor = "#25273D";  1
       // addedDiv.style.backgroundColor = "#25273D";  2
 
@@ -103,7 +137,7 @@ let sunImage =  "./images/bg-desktop-light.jpg"
     }
   })
   sun.addEventListener("click", () => {
-    if(sun.style.display = "block"){
+    if(sun.style.display === "block"){
       sun.style.display = "none";
       moon.style.display = "block";
       body.style.backgroundColor = "white";
