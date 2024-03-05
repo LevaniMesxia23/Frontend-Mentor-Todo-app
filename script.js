@@ -18,19 +18,18 @@ input.addEventListener("keyup", (e) => {
 
 let tasks = []
 
-
 function createDiv(inputValue){
   tasks.push({
     todo: inputValue,
     completed: false
   })
   
-  allTodos()
+  allTodos(tasks)
 }
-function allTodos(){
+function allTodos(item){
   newDiv.innerHTML = ""
-  tasks.forEach((tasksItem, index) => {
-    newDiv.innerHTML += `<div class="added-div">
+  item.forEach((tasksItem, index) => {
+    newDiv.innerHTML += `<div class="added-div ${sun.style.display == "block"? "added-background": null}">
     <button><img src="./images/icon-check.svg" alt=""></button>
     <span class="main-span ${tasksItem.completed ? "spanCrossed" : null}">${tasksItem.todo}</span>
     <svg class="x" onclick="removeTask(${index})" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -45,8 +44,7 @@ function allTodos(){
     
     button.addEventListener("click", () => {
       tasks[index].completed = !tasks[index].completed
-      allTodos()
-      
+      allTodos(tasks)
 })
   })
   })
@@ -58,28 +56,27 @@ const completed = document.querySelector(".completed")
 const clearCompleted = document.querySelector(".clear-completed")
 
 all.addEventListener("click", () => {
-  tasks.forEach(allTodos)
+  allTodos(tasks)
 })
 
 active.addEventListener("click", () =>{
-  deleteDivs()
   const activeTask = tasks.filter(task => task.completed === false)
-  activeTask.forEach(allTodos)
+  allTodos(activeTask)
   console.log(activeTask)
   itemsLeft.innerHTML = `${activeTask.length} items left`
 })
 
 completed.addEventListener("click", ()=>{
-  deleteDivs()
   const completedTask = tasks.filter(task => task.completed !== false)
-  completedTask.forEach(allTodos)
+  allTodos(completedTask)
   console.log(completedTask)
   itemsLeft.innerHTML = `${completedTask.length} items left`
 })
 
 function deleteDivs(){
   addedDiv.forEach(div => {
-    div.remove()
+    tasks = []
+    newDiv.innerHTML = ""
   })
 }
 
@@ -95,11 +92,10 @@ clearCompleted.addEventListener("click", () => {
 
 function removeTask(index) {
   tasks.splice(index, 1)
-  allTodos()
+  allTodos(tasks)
 }
 
 
-const addedBackground = document.querySelector(".added-background")
 let moonImage =  "./images/bg-desktop-dark.jpg"
 let sunImage =  "./images/bg-desktop-light.jpg"
 moon.addEventListener("click", () => {
@@ -135,8 +131,13 @@ moon.addEventListener("click", () => {
       body.style.backgroundColor = "white";
       document.body.style.backgroundImage = 'url(' + sunImage + ')';
       
+      all.style.color = "#9495A5";
+      active.style.color = "#9495A5";
+      completed.style.color = "#9495A5";
+      clearCompleted.style.color = "#9495A5";
       input.style.backgroundColor = "#fff";
       input.style.color = "#C8CBE7";
+      instBox.style.backgroundColor = "#FFF";
       const addedDivs = document.querySelectorAll(".added-div");
       addedDivs.forEach(div => {
       div.classList.remove("added-background");
@@ -149,13 +150,6 @@ moon.addEventListener("click", () => {
   })
 
 
-  // input.style.backgroundColor = "#fff";
-  //     instBox.style.backgroundColor = "#FFF";
-  //     itemsLeft.style.color = "#9495A5;";
-  //     all.style.color = "#9495A5;";
-  //     active.style.color = "#9495A5;";
-  //     completed.style.color = "#9495A5;";
-  //     clearCompleted.style.color = "#9495A5;";
 
 
 
