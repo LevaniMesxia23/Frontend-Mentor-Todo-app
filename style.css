@@ -56,6 +56,7 @@ h1{
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.25px;
+  color: #9495A5;
 }
 
 
@@ -72,6 +73,19 @@ h1{
   align-items: center;
   justify-content: center;
 }
+.added-background{
+  width: 540px;
+  flex-shrink: 0;
+  background: #25273D;
+  color: #C8CBE7;
+  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.50);
+  padding: 16px;
+  border-bottom: 1px solid #393A4B;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 button{
   width: 24px;
   height: 24px;
@@ -81,6 +95,8 @@ button{
 }
 .main-span{
   margin-left: -150px;
+  color: #494C6B;
+
 }
 .spanCrossed{
   color: #D1D2DA;
