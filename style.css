@@ -92,9 +92,18 @@ button{
   margin-left: -1px;
   cursor: pointer;
 
-  background-color: #fff;
   border: 1px solid #E3E4F1;
   border-radius: 50%;
+}
+.backgroundImg{
+  background-image: url(./images/icon-check.svg);
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+
 }
 .main-span{
   color: #494C6B;
@@ -112,6 +121,11 @@ button{
 .x{
   margin-right: -1px;
   cursor: pointer;
+}
+
+.image{
+  width: 40px;
+  height: 40px;
 }
 
 
@@ -166,6 +180,7 @@ button{
   color: chocolate;
 }
 .box1{
+  width: 540px;
   height: 48px;
   flex-shrink: 0;
   display: flex;
@@ -176,4 +191,8 @@ button{
   border-radius: 5px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 16px;
+}
+.responsive-box{
+  display: flex;
+  flex-direction: column;
 }

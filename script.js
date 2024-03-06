@@ -1,13 +1,32 @@
+const resp = document.querySelector(".responsive-box")
+const instr = document.querySelector(".instr")
 const input = document.querySelector("input")
 
 const container = document.querySelector(".container")
+if(document.body.clientWidth < 767){
+  resp.style.display = "flex"
+  instr.style.display = "none"
+}else{  
+  resp.style.display = "none"
+  instr.style.display = "flex"
+}
+window.addEventListener("resize", ()=>{
+  if(document.body.clientWidth < 767){
+    resp.style.display = "flex"
+    instr.style.display = "none"
+  }else{
+    resp.style.display = "none"
+    instr.style.display = "flex"
+  }
+})
 const moon = document.querySelector(".moon")
 const sun = document.querySelector(".sun")
 const body = document.querySelector("body")
 const instBox = document.querySelector(".instruction-box")
 const newDiv = document.querySelector(".newDiv")
 const itemsLeft = document.querySelector(".items-left")
-const addedDiv = document.querySelectorAll(".added-div")
+let addedDiv = document.querySelectorAll(".added-div")
+
 
 input.addEventListener("keyup", (e) => {
   if (e.key === "Enter" && input.value !== "") {
@@ -29,15 +48,15 @@ function createDiv(inputValue){
 function allTodos(item){
   newDiv.innerHTML = ""
   item.forEach((tasksItem, index) => {
-    newDiv.innerHTML += `<div class="added-div ${sun.style.display == "block"? "added-background": null}">
-    <button><img src="./images/icon-check.svg" alt=""></button>
+    newDiv.innerHTML += `<div class="added-div ${sun.style.display == "block"? "added-background": null} draggable="true">
+    <button class=" ${tasksItem.completed ? "backgroundImg" : null}"></button>
     <span class="main-span ${tasksItem.completed ? "spanCrossed" : null}">${tasksItem.todo}</span>
     <svg class="x" onclick="removeTask(${index})" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
       <path fill-rule="evenodd" clip-rule="evenodd" d="M17.6777 0.707107L16.9706 0L8.83883 8.13173L0.707107 0L0 0.707107L8.13173 8.83883L0 16.9706L0.707106 17.6777L8.83883 9.54594L16.9706 17.6777L17.6777 16.9706L9.54594 8.83883L17.6777 0.707107Z" fill="#494C6B"/>
     </svg>
   </div>`
 
-  const addedDiv = document.querySelectorAll(".added-div")
+  addedDiv = document.querySelectorAll(".added-div")
   addedDiv.forEach((addedDiv, index) => {
     const button = addedDiv.querySelector("button")
     const span = addedDiv.querySelector("span")
@@ -50,6 +69,12 @@ function allTodos(item){
   })
   itemsLeft.innerHTML = `${tasks.length} items left`
 }
+
+
+
+
+
+
 const all = document.querySelector(".all")
 const active = document.querySelector(".active")
 const completed = document.querySelector(".completed")
@@ -95,7 +120,9 @@ function removeTask(index) {
   allTodos(tasks)
 }
 
-
+const mainSpan = document.querySelector(".main-span")
+const box1 = document.querySelector(".box1")
+const instBox2 = document.querySelector('.instruction-box.instBox2');
 let moonImage =  "./images/bg-desktop-dark.jpg"
 let sunImage =  "./images/bg-desktop-light.jpg"
 moon.addEventListener("click", () => {
@@ -113,10 +140,14 @@ moon.addEventListener("click", () => {
     clearCompleted.style.color = "#C8CBE7";
     instBox.style.backgroundColor = "#25273D";
     newDiv.style.backgroundColor = "#25273D";
+    instBox2.style.backgroundColor = "#25273D";
     const addedDivs = document.querySelectorAll(".added-div");
     addedDivs.forEach(div => {
       div.classList.add("added-background");
     });
+    
+    box1.style.backgroundColor = "#25273D";
+    instBox2.style.backgroundColor = "25273D"
     
   } else {
     moon.style.display = "block";
@@ -135,6 +166,7 @@ moon.addEventListener("click", () => {
       active.style.color = "#9495A5";
       completed.style.color = "#9495A5";
       clearCompleted.style.color = "#9495A5";
+      itemsLeft.style.color = "#9495A5";
       input.style.backgroundColor = "#fff";
       input.style.color = "#C8CBE7";
       instBox.style.backgroundColor = "#FFF";
@@ -142,12 +174,18 @@ moon.addEventListener("click", () => {
       addedDivs.forEach(div => {
       div.classList.remove("added-background");
     });
-      
+      box1.style.backgroundColor = "#FFF";
+      instBox2.style.backgroundColor = "#fff";
     } else {
       sun.style.display = "block";
       moon.style.display = "none";
     }
   })
+
+  console.log(document.body.style.strokeWidth)
+  console.log(document.body.offsetWidth)
+
+
 
 
 
